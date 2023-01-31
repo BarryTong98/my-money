@@ -1,11 +1,17 @@
 import styles from './Home.module.css'
 
 import React from 'react';
+import TransactionForm from "./TransactionForm";
 
-function Home(props) {
+function Home() {
     return (
-        <div>
-            Home
+        <div className={styles.container}>
+            <div className={styles.content}>
+                transaction list
+            </div>
+            <div className={styles.sidebar}>
+                <TransactionForm/>
+            </div>
         </div>
     );
 }
