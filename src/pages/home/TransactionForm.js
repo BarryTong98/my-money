@@ -1,20 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import {useFirestore} from "../../hooks/useFirestore";
+import { useState, useEffect } from 'react'
+import { useFirestore } from '../../hooks/useFirestore'
 
-function TransactionForm({uid}) {
-    const [name, setName] = useState('');
-    const [amount, setAmount] = useState('');
-    const {addDocument, response} = useFirestore('transactions')
+export default function TransactionForm({ uid }) {
+    const [name, setName] = useState('')
+    const [amount, setAmount] = useState('')
+    const { addDocument, response } = useFirestore('transactions')
+
     const handleSubmit = (e) => {
         e.preventDefault()
         addDocument({
             uid,
             name,
-            amount
+            amount,
         })
     }
 
-    //reset the form fields
+    // reset the form fields
     useEffect(() => {
         if (response.success) {
             setName('')
@@ -29,29 +30,23 @@ function TransactionForm({uid}) {
                 <label>
                     <span>Transaction name:</span>
                     <input
-                        type={"text"}
+                        type="text"
                         required
-                        onChange={(e) => {
-                            setName(e.target.value)
-                        }}
+                        onChange={(e) => setName(e.target.value)}
                         value={name}
                     />
                 </label>
                 <label>
                     <span>Amount ($):</span>
                     <input
-                        type={"number"}
+                        type="number"
                         required
-                        onChange={(e) => {
-                            setAmount(e.target.value)
-                        }}
+                        onChange={(e) => setAmount(e.target.value)}
                         value={amount}
                     />
                 </label>
                 <button>Add Transaction</button>
             </form>
         </>
-    );
+    )
 }
-
-export default TransactionForm;

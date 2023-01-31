@@ -23,10 +23,8 @@ export const useLogout = () => {
             setError(null)
 
         } catch (err) {
-
             setError(err.message)
             setIsPending(false)
-
         }
     }
 

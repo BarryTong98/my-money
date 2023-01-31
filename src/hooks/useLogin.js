@@ -17,18 +17,14 @@ export const useLogin = () => {
 
             // dispatch login action
             dispatch({type: 'LOGIN', payload: res.user})
-
-                setIsPending(false)
-                setError(null)
+            setIsPending(false)
+            setError(null)
 
         } catch (err) {
-
-                setError(err.message)
-                setIsPending(false)
-
+            setError(err.message)
+            setIsPending(false)
         }
     }
-
 
 
     return {login, isPending, error}
